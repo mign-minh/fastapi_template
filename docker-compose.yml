@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  yolov8-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+      - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+    env_file:
+      - .env
+    restart: unless-stopped
